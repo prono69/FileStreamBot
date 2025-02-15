@@ -1,10 +1,10 @@
-from quart import Blueprint, Response, request, render_template, redirect
+from quart import Blueprint, Response, request, render_template, redirect, jsonify
 from math import ceil
 import time
 from re import match as re_match
 from .error import abort
 from bot import TelegramBot, StartTime, utils
-from bot.config import Telegram, Server, BOT_USERNAME
+from bot.config import Telegram, Server
 from bot.modules.telegram import get_message, get_file_properties
 
 bp = Blueprint('main', __name__)
@@ -19,8 +19,16 @@ async def status():
     return jsonify({
         "status": "running",
         "uptime": utils.get_readable_time(time.time() - StartTime),
-        "telegram_bot": "@" + BOT_USERNAME,
-    })    
+        "telegram_bot": "@" + Telegram.BOT_USERNAME,
+    })
+
+
+@bp.route('/health')
+async def health():
+    return jsonify({
+        "message": "running",
+    })
+
 
 @bp.route('/dl/<int:file_id>')
 async def transmit_file(file_id):
