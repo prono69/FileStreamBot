@@ -1,3 +1,4 @@
+import time
 from hydrogram import Client
 from logging import getLogger
 from logging.config import dictConfig
@@ -6,6 +7,8 @@ from .config import Telegram, LOGGER_CONFIG_JSON
 dictConfig(LOGGER_CONFIG_JSON)
 
 version = 1.8
+StartTime = time.time()
+ 
 logger = getLogger('bot')
 
 TelegramBot = Client(
