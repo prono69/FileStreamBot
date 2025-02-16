@@ -62,7 +62,7 @@ def get_caption(client, duration: float, server_status: str, uptime: str, is_pre
 
 async def send_ping_response(client, message: Message, duration: float, server_status: str, uptime: str, is_premium: bool, photo=None):
     """Send the ping response with optional photo."""
-    caption = get_caption(duration, server_status, uptime, is_premium)
+    caption = get_caption(client, duration, server_status, uptime, is_premium)
     if photo:
         await message.reply_photo(photo, caption=caption)
     else:
