@@ -43,27 +43,24 @@ async def evaluation_cmd_t(client, message: Message):
         await status_message.delete()
     else:
         await status_message.edit_text(final_output)
+        
+        
 
 async def aexec(code, client, message):
-    # Define the function template with consistent indentation
-    function_template = """
-async def __aexec(client, message):
-    import os
-    neo = message
-    message = event = neo = e
-    r = reply = message.reply_to_message
-    chat = message.chat.id
-    c = client
-    to_photo = message.reply_photo
-    to_video = message.reply_video
-    p = print
-    """
-    
-    # Combine the template with the user-provided code, ensuring consistent indentation
-    full_code = function_template + "\n".join(f"    {line}" for line in code.split("\n"))
-    
-    # Execute the combined code
-    exec(full_code)
-    
-    # Call the dynamically defined function
+    exec(
+        (
+            "async def __aexec(client, message):\n"
+            + " import os\n"
+            + " import wget\n"
+            + " neo = message\n"
+            + " message = event = neo = e\n"
+            + " r = reply = message.reply_to_message\n"
+            + " chat = message.chat.id\n"
+            + " c = client\n"
+            + " to_photo = message.reply_photo\n"
+            + " to_video = message.reply_video\n"
+            + " p = print\n"
+        )
+        + "".join(f"\n {l}" for l in code.split("\n"))
+    )
     return await locals()["__aexec"](client, message)
