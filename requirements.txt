@@ -1,4 +1,5 @@
 aiohttp
+requests
 hydrogram
 tgcrypto
 quart
