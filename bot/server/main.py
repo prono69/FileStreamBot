@@ -17,7 +17,7 @@ async def home():
 
 
 @bp.route('/bot')
-async def home():
+async def bot():
     return redirect(f'https://t.me/{Telegram.BOT_USERNAME}')
     
 
