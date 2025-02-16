@@ -8,7 +8,7 @@ from bot.config import Telegram
 
 MAX_MESSAGE_LENGTH = 4096
 
-@TelegramBot.on_message(filters.command("bash") & filters.users(Telegram.OWNER_ID))
+@TelegramBot.on_message(filters.command("bash") & filters.user(Telegram.OWNER_ID))
 async def execution(client, message):
     status_message = await message.reply_text("`Processing ...`")
     
