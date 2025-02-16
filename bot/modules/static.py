@@ -1,12 +1,44 @@
-WelcomeText = \
-"""\
-Hi **%(first_name)s**, send me a file to instantly generate file links.
+WelcomeText = [
+    """\
+👋 **Hey %(first_name)s**, welcome!  
 
-**Commands:**
-/privacy - View bot's privacy policy.
-/log - Get bot's log file. (owner only)
-/help - Show this message.
+📤 **Send me a file** to instantly generate a file link.  
+
+━━━━━━━━━━━━━━━━━━━  
+🔹 **Commands:**  
+🔹 /privacy - __View bot's privacy policy.__
+🔹 /log - __Get bot's log file.__ **__(Owner only)__**
+🔹 /help - __Show this message.__
+━━━━━━━━━━━━━━━━━━━  
+""",
+    """\
+╭━──◆ **Welcome, %(first_name)s!** ◆──━╮  
+🚀 **Send me a file** to instantly generate a file link!  
+╰━───────────────━╯  
+
+✨ **Available Commands:**  
+📜 /privacy - __View the bot's privacy policy.__
+📂 /log - __Get the bot's log file.__ **__(Owner only)__**
+ℹ️ /help - __Show this message.__
+
+💠 **__Enjoy the seamless experience!__** 💠
+""",
+    """\
+🚀 **Welcome, %(first_name)s!** 🚀  
+
+📂 **__Send me a file to instantly generate a file link!__**
+
+━━━━━━━━━━━━━━━━━━  
+✨ **Available Commands:**  
+📜 /privacy - __View bot's privacy policy.__
+📂 /log - __Get the bot's log file.__ **__(Owner only)__**
+ℹ️ /help - __Show this message.__
+━━━━━━━━━━━━━━━━━━  
+
+💠 **__Enjoy the seamless experience!__** 💠  
 """
+]
+
 
 PrivacyText = \
 """

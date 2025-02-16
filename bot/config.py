@@ -15,6 +15,9 @@ class Server:
     BIND_ADDRESS = env.get("BIND_ADDRESS", "0.0.0.0")
     PORT = int(env.get("PORT", 7860))
 
+# Suppose PICS is defined as a string of links separated by spaces:
+PICS = env.get("PICS", "https://envs.sh/0Uw.jpg https://envs.sh/0Uq.jpg https://envs.sh/0U0.jpg https://envs.sh/0UW.jpg https://envs.sh/0UI.jpg https://telegra.ph/file/3d0fac76ab59a4ef83b3a.jpg https://i.imgur.com/byGIN5S.jpg https://telegra.ph/file/d9b391fa763286dea1c38.jpg")
+
 # LOGGING CONFIGURATION
 LOGGER_CONFIG_JSON = {
     'version': 1,
