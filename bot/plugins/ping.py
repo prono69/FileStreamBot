@@ -49,10 +49,10 @@ async def fetch_server_status():
     except Exception as e:
         return f"Error: {str(e)}"
 
-def get_caption(client, duration: float, uptime: str, is_premium: bool, server_status: str) -> str:
+def get_caption(client, duration: float, server_status: str, uptime: str, is_premium: bool) -> str:
     """Generate the caption for the ping response."""
     if is_premium:
-        return f"**Pong !!** `{duration}ms`\n**Uptime** - `{uptime}`\n**Server:** {server_status}"
+        return f"**Pong !!** `{duration}ms`\n**Server:** {server_status}\n**Uptime** - `{uptime}`\n"
     return (
         f"🏓 **Pɪɴɢᴇʀ :** `{duration}ms`\n"
         f"👨‍💻 **Sᴇʀᴠᴇʀ:** `{server_status}`"
@@ -60,9 +60,9 @@ def get_caption(client, duration: float, uptime: str, is_premium: bool, server_s
         f"🤴 **Oᴡɴᴇʀ :** {client.me.mention}"
     )
 
-async def send_ping_response(client, message: Message, duration: float, uptime: str, is_premium: bool, server_status: str, photo=None):
+async def send_ping_response(client, message: Message, duration: float, server_status: str, uptime: str, is_premium: bool, photo=None):
     """Send the ping response with optional photo."""
-    caption = get_caption(duration, uptime, is_premium, server_status)
+    caption = get_caption(duration, server_status, uptime, is_premium)
     if photo:
         await message.reply_photo(photo, caption=caption)
     else:
@@ -103,14 +103,14 @@ async def custom_ping_handler(client, message: Message):
     server_status = await fetch_server_status()
 
     if PING_DISABLE_NONPREM.get(message.from_user.id):
-        await lol.edit_text(get_caption(client, duration, uptime, is_premium, server_status))
+        await lol.edit_text(get_caption(client, duration, server_status, uptime, is_premium))
         return
 
     if is_anime:
         photo = waifu_random() if is_anime.get("anime") else waifu_hentai() if is_anime.get("hentai") else None
         if photo:
-            await send_ping_response(client, message, duration, uptime, is_premium, server_status, photo)
+            await send_ping_response(client, message, duration, server_status, uptime, is_premium, photo)
             await lol.delete()
             return
 
-    await send_ping_response(client, message, duration, uptime, is_premium, server_status)
+    await send_ping_response(client, message, duration, server_status, uptime, is_premium)

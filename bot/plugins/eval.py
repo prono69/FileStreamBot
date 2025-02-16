@@ -53,7 +53,7 @@ async def aexec(code, client, message):
             + " import os\n"
             + " import wget\n"
             + " neo = message\n"
-            + " message = event = neo = e\n"
+            + " e = message = event = neo\n"
             + " r = reply = message.reply_to_message\n"
             + " chat = message.chat.id\n"
             + " c = client\n"
