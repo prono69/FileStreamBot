@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FileStreamBot - Stream Telegram Videos</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Google Fonts: Montserrat for body, Orbitron for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+    }
+    h1, h2, h3, h4, h5 {
+      font-family: 'Orbitron', sans-serif;
+    }
+    /* Navbar */
+    .navbar {
+      background: #1c1c1e;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+    .navbar-brand, .nav-link {
+      color: #e0e0e0 !important;
+    }
+    .nav-link:hover {
+      color: #ff4081 !important;
+    }
+    /* Hero Section with Gradient Background */
+    .hero {
+      background: linear-gradient(135deg, #3a2c54, #734f96, #a78abf);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+    /* Features Section with Techy Gradient */
+    .features {
+      background: linear-gradient(135deg, #1a1a1d, #4e4e50);
+      padding: 60px 0;
+    }
+    .features h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #ff4081;
+    }
+    .feature-card {
+      transition: transform 0.3s, box-shadow 0.3s;
+      background-color: #2b2b2b;
+      border: none;
+      border-radius: 8px;
+    }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 4px 20px rgba(255, 64, 129, 0.4);
+    }
+    .feature-card .card-body {
+      color: #e0e0e0;
+    }
+    /* GitHub Status Section */
+    .github-status {
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    /* System Information Section (Neofetch Style) */
+    .system-info {
+      background: #0d0d0d;
+      color: #33ff33;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+    /* Footer */
+    footer {
+      background: #1c1c1e;
+      color: #e0e0e0;
+      padding: 20px 0;
+      text-align: center;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">FileStreamBot</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#features">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#github">GitHub Status</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#system">System Info</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content animate__animated animate__fadeInDown animate__delay-1s">
+      <h1 class="animate__animated animate__zoomIn">FileStreamBot</h1>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">
+        Download Telegram videos and stream them instantly. Get your streaming links in seconds!
+      </p>
+      <a href="/status" class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite">Check Server Status</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="animate__animated animate__fadeInUp">Features</h2>
+        <p class="lead animate__animated animate__fadeInUp animate__delay-1s">
+          Experience fast, reliable file streaming with powerful, techy features.
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card feature-card animate__animated animate__fadeInUp">
+            <div class="card-body">
+              <h5 class="card-title">Fast Downloads</h5>
+              <p class="card-text">Instantly download Telegram videos and files with blazing speed.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card feature-card animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="card-body">
+              <h5 class="card-title">Seamless Streaming</h5>
+              <p class="card-text">Generate streaming links on-the-fly for smooth playback.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card feature-card animate__animated animate__fadeInUp animate__delay-2s">
+            <div class="card-body">
+              <h5 class="card-title">User-Friendly Interface</h5>
+              <p class="card-text">Enjoy an intuitive design that makes file management effortless.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card feature-card animate__animated animate__fadeInUp">
+            <div class="card-body">
+              <h5 class="card-title">Secure & Reliable</h5>
+              <p class="card-text">Robust security measures to ensure your data is safe.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card feature-card animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="card-body">
+              <h5 class="card-title">Real-Time Updates</h5>
+              <p class="card-text">Stay informed with live server and GitHub status updates.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card feature-card animate__animated animate__fadeInUp animate__delay-2s">
+            <div class="card-body">
+              <h5 class="card-title">Multi-Platform Support</h5>
+              <p class="card-text">Access the bot from any device, anytime, anywhere.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub Status Section -->
+  <section id="github" class="py-5 bg-dark">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="animate__animated animate__fadeInUp">GitHub Status</h2>
+        <p class="lead animate__animated animate__fadeInUp animate__delay-1s">
+          Follow our development progress on GitHub.
+        </p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <!-- GitHub Summary Card -->
+          <img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=prono69&theme=monokai" 
+               alt="GitHub Profile Summary" class="img-fluid animate__animated animate__zoomIn">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- System Information Section -->
+  <section id="system" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="animate__animated animate__fadeInUp">Hosted Machine Info</h2>
+        <p class="lead animate__animated animate__fadeInUp animate__delay-1s">
+          A quick glance at our server's system details.
+        </p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="system-info animate__animated animate__fadeInUp animate__delay-2s">
+            <code>
+    💻 OS: {{ system_info.os }}<br>
+    🔧 Kernel: {{ system_info.kernel }}<br>
+    ⚙️ CPU: {{ system_info.cpu }}<br>
+    🧠 Memory: {{ system_info.memory }}<br>
+    ⏱ Uptime: {{ system_info.uptime }}<br>
+    📈 Load: {{ system_info.load }}<br>
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 FileStreamBot. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

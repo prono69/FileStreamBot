@@ -1,3 +1,9 @@
+import time
+import psutil
+import platform
+import datetime
+from bot import StartTime
+
 def get_readable_time(seconds: int) -> str:
     count = 0
     readable_time = ""
@@ -20,3 +26,34 @@ def get_readable_time(seconds: int) -> str:
     time_list.reverse()
     readable_time += ": ".join(time_list)
     return readable_time
+    
+
+def get_system_info():
+    # Basic OS info
+    os_info = f"{platform.system()} {platform.release()}"
+    kernel = platform.version()
+    cpu = platform.processor() or "N/A"
+    
+    # Memory info (in GB)
+    mem = psutil.virtual_memory()
+    total_memory = mem.total / (1024 ** 3)
+    
+    # Uptime (you could also use psutil.boot_time() if preferred)
+    uptime_seconds = time.time() - StartTime
+    uptime_str = str(datetime.timedelta(seconds=int(uptime_seconds)))
+    
+    # Load average (Unix only; for Windows, consider alternatives)
+    try:
+        load = psutil.getloadavg()
+        load_str = f"{load[0]:.2f}, {load[1]:.2f}, {load[2]:.2f}"
+    except AttributeError:
+        load_str = "N/A"
+
+    return {
+        "os": os_info,
+        "kernel": kernel,
+        "cpu": cpu,
+        "memory": f"{total_memory:.2f} GB",
+        "uptime": uptime_str,
+        "load": load_str
+    }

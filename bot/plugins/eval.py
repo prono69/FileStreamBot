@@ -4,12 +4,13 @@ import io
 import traceback
 import os
 from time import perf_counter
-from hydrogram import filters, Client
+from hydrogram import filters
 from hydrogram.types import Message
 from bot import TelegramBot
+from bot.config import Telegram
 
-@TelegramBot.on_message(filters.command(["eval", "ev"]) & filters.me & ~filters.forwarded)
-async def evaluation_cmd_t(client: Client, message: Message):
+@TelegramBot.on_message(filters.command(["eval", "ev"]) & filters.users(Telegram.OWNER_ID) & ~filters.forwarded)
+async def evaluation_cmd_t(client, message: Message):
     if message.from_user.id != 790841356:
         return await message.reply("Only Developer")
     

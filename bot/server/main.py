@@ -11,9 +11,16 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/')
 async def home():
+    system_info = utils.get_system_info()
+    # Pass system_info to the template
+    return await render_template("index.html", system_info=system_info)
+
+
+@bp.route('/bot')
+async def home():
     return redirect(f'https://t.me/{Telegram.BOT_USERNAME}')
     
-    
+
 @bp.route('/status')
 async def status():
     return jsonify({
