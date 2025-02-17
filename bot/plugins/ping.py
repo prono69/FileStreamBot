@@ -55,9 +55,9 @@ def get_caption(client, duration: float, server_status: str, uptime: str, is_pre
         return f"**Pong !!** `{duration}ms`\n**Server:** {server_status}\n**Uptime** - `{uptime}`\n"
     return (
         f"🏓 **Pɪɴɢᴇʀ :** `{duration}ms`\n"
-        f"👨‍💻 **Sᴇʀᴠᴇʀ:** `{server_status}`"
+        f"👨‍💻 **Sᴇʀᴠᴇʀ:** `{server_status}`\n"
         f"⌛ **Uᴘᴛɪᴍᴇ :** `{uptime}`\n"
-        f"🤴 **Oᴡɴᴇʀ :** {client.me.mention}"
+        f"🤴 **Oᴡɴᴇʀ :** **__{client.me.mention}__**"
     )
 
 async def send_ping_response(client, message: Message, duration: float, server_status: str, uptime: str, is_premium: bool, photo=None):
@@ -94,8 +94,8 @@ async def pingsetsetting(client, message: Message):
 async def custom_ping_handler(client, message: Message):
     uptime = utils.get_readable_time((time.time() - StartTime))
     start = dt.now()
-    lol = await message.reply_text("**Pong!!**")
-    await asyncio.sleep(1.5)
+    lol = await message.reply_text("**__Pong!!__**")
+    # await asyncio.sleep(1.5)
     duration = (dt.now() - start).microseconds / 1000
 
     is_premium = client.me.is_premium
@@ -114,3 +114,4 @@ async def custom_ping_handler(client, message: Message):
             return
 
     await send_ping_response(client, message, duration, server_status, uptime, is_premium)
+    await lol.delete()
