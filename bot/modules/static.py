@@ -65,12 +65,38 @@ FileLinksText = \
 `%(dl_link)s`
 """
 
+FileLinkText = """
+<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i> 🎉
+
+📂 **Fɪʟᴇ ɴᴀᴍᴇ:** `{file_name}`
+
+📦 **Fɪʟᴇ ꜱɪᴢᴇ:** `{file_size}`
+
+📥 **Dᴏᴡɴʟᴏᴀᴅ:** __{dl_link}__
+
+🚸 **Nᴏᴛᴇ:** **LINK WON'T EXPIRE TILL YOU REVOKE**
+"""
+
 MediaLinksText = \
 """
 **Download Link:**
 `%(dl_link)s`
 **Stream Link:**
 `%(stream_link)s`
+"""
+
+MediaLinkText = """
+<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i> 🎉
+
+📂 **Fɪʟᴇ ɴᴀᴍᴇ:** __{file_name}__
+
+📦 **Fɪʟᴇ ꜱɪᴢᴇ:** `{file_size}`
+
+📥 **Dᴏᴡɴʟᴏᴀᴅ:** __{dl_link}__
+
+🖥 **WATCH:** __{stream_link}__
+
+🚸 **Nᴏᴛᴇ:** **LINK WON'T EXPIRE TILL YOU REVOKE**
 """
 
 InvalidQueryText = \

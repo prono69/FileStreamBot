@@ -8,7 +8,7 @@ class Telegram:
     BOT_USERNAME = env.get("TELEGRAM_BOT_USERNAME", "xxxx_streambot")
     BOT_TOKEN = env.get("TELEGRAM_BOT_TOKEN", "1234567:xyz")
     CHANNEL_ID = int(env.get("TELEGRAM_CHANNEL_ID", -1001684936508))
-    SECRET_CODE_LENGTH = int(env.get("SECRET_CODE_LENGTH", 24))
+    SECRET_CODE_LENGTH = int(env.get("SECRET_CODE_LENGTH", 10))
 
 class Server:
     BASE_URL = env.get("BASE_URL", "https://kawaiimizo-maakichu.hf.space")

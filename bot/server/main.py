@@ -37,7 +37,7 @@ async def health():
     })
 
 
-@bp.route('/dl/<int:file_id>')
+@bp.route('/dl/<int:file_id>', methods=['GET', 'POST', 'HEAD'])
 async def transmit_file(file_id):
     file = await get_message(file_id) or abort(404)
     code = request.args.get('code') or abort(401)
@@ -102,7 +102,7 @@ async def transmit_file(file_id):
 
     return Response(file_stream(), headers=headers, status=status_code)
 
-@bp.route('/stream/<int:file_id>')
+@bp.route('/stream/<int:file_id>', methods=['GET', 'POST', 'HEAD'])
 async def stream_file(file_id):
     code = request.args.get('code') or abort(401)
     return await render_template('player.html', mediaLink=f'{Server.BASE_URL}/dl/{file_id}?code={code}')
