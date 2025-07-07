@@ -39,7 +39,7 @@ async def health():
     })
 
 
-@bp.route('/dl/<int:file_id_with_ext>', methods=['GET', 'POST', 'HEAD'])
+@bp.route('/dl/<file_id_with_ext>', methods=['GET', 'POST', 'HEAD'])
 async def transmit_file(file_id_with_ext):
     # Split file_id and extension
     try:
@@ -54,9 +54,9 @@ async def transmit_file(file_id_with_ext):
     if code != file.caption.split('/')[0]:
         abort(403)
 
+    # Rest of your existing file handling code remains the same...
     file_name, file_size, mime_type = get_file_properties(file)
     
-    # Rest of your existing code remains the same...
     range_header = request.headers.get('Range')
     start = 0
     end = file_size - 1
