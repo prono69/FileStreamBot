@@ -39,13 +39,17 @@ async def health():
     })
 
 
-@bp.route('/dl/<int:file_id>', methods=['GET', 'POST', 'HEAD'])
-async def transmit_file(file_id):
-    file = await get_message(file_id) or abort(404)
+@bp.route('/dl/<int:file_id_with_ext>', methods=['GET', 'POST', 'HEAD'])
+async def transmit_file(file_id_with_ext):
+    # Split file_id and extension
+    try:
+        file_id_str, ext = file_id_with_ext.split('.', 1)
+        file_id = int(file_id_str)
+    except ValueError:
+        abort(404)  # Invalid file ID format
     
-    # Get code from query parameter and split out extension if present
+    file = await get_message(file_id) or abort(404)
     code = request.args.get('code') or abort(401)
-    # code = code_with_ext.split('.')[0]  # Remove any extension
     
     if code != file.caption.split('/')[0]:
         abort(403)
