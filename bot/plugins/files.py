@@ -91,7 +91,7 @@ async def handle_user_file(_, msg: Message):
     file_id = file.id
     
     # Generate links with extension
-    dl_link = f'{Server.BASE_URL}/dl/{file_id}?code={secret_code}.{ext}'
+    dl_link = f'{Server.BASE_URL}/dl/{file_id}.{ext}?code={secret_code}'
     stream_link = f'{Server.BASE_URL}/stream/{file_id}?code={secret_code}'
     
     formatted_message = MediaLinkText.format(

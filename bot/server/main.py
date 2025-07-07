@@ -44,8 +44,8 @@ async def transmit_file(file_id):
     file = await get_message(file_id) or abort(404)
     
     # Get code from query parameter and split out extension if present
-    code_with_ext = request.args.get('code') or abort(401)
-    code = code_with_ext.split('.')[0]  # Remove any extension
+    code = request.args.get('code') or abort(401)
+    # code = code_with_ext.split('.')[0]  # Remove any extension
     
     if code != file.caption.split('/')[0]:
         abort(403)
